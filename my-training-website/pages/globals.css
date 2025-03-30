@@ -18,8 +18,10 @@ body {
 
 body {
   color: var(--foreground);
-  background: var(--background);
-  font-family: 'Ubuntu', sans-serif;
+  
+  
+  font-family: var(--font-montserrat);
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -39,4 +41,9 @@ a {
   html {
     color-scheme: dark;
   }
+}
+.MuiTypography-root,
+.MuiButton-root,
+.MuiInputBase-root {
+  font-family: var(--font-montserrat) !important;
 }

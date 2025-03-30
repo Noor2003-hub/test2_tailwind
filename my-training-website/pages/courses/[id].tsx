@@ -1,11 +1,12 @@
 import { NextPage, GetStaticPaths, GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
-import { Box, Typography, Button, Chip, CardMedia } from '@mui/material';
+import { Box,CardContent, Typography, Button, Chip, CardMedia } from '@mui/material';
 import StarIcon from '@mui/icons-material/Star';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ShareIcon from '@mui/icons-material/Share';
 import VisibilityIcon from '@mui/icons-material/Visibility';
-import Header from '../../src/app/components/Header'
+import {InfoSpan,IconTag, Heading3,Rating } from '../../components/typography/index';
+
 interface Course {
   id: string;
   title: string;
@@ -30,35 +31,68 @@ interface CourseDetailsProps {
 const CourseDetails: NextPage<CourseDetailsProps> = ({ course }) => {
   const router = useRouter();
 
-  if (router.isFallback) {
-    return <div>Loading...</div>;
+  if (router.isFallback) { //when pages are generating (not yet)
+    return <div>Loading...</div>; //Static Site Generation, 
   }
 
   return (
-    <div style={{ fontFamily: 'Arial, sans-serif' }}><Header />
-    <Box sx={{ padding: '40px', backgroundColor: '#EAF2FF', minHeight: '100vh' }}>
-      <Box sx={{ maxWidth: '800px', margin: '0 auto', backgroundColor: '#fff', borderRadius: 2, boxShadow: 3, padding: 4 }}>
+    <div style={{display:'flex', justifyContent: 'center',alignItems: 'center', backgroundColor: '#EAF2FF' }}>
+    <Box sx={{
+        display: 'flex',
+        flexDirection: 'row',
+        width: '90%',
+        height: 750,
+        padding:5,
+        borderRadius: 0, 
+        boxShadow: 0,
+        
+      }}>
+      <Box sx={{ display: 'flex',
+        flexDirection: 'row', width: '100%',height:'100%', margin: '0 auto', backgroundColor: '#fff', borderRadius: 2, boxShadow: 3, padding: 4 }}>
+        
+        <Box sx={{position: 'absolute',justifyContent: 'center',
+                alignItems: 'center',
+                display: 'flex',
+                gap: 5,
+                marginTop:67,
+                px:'5%',
+                height:2
+                  }}>
+                  <IconTag sx={{height:40}}><img style={{width:30}}  src='/heart_info.png' onClick={() => alert('You need to login to do this action')} /></IconTag>
+                  <IconTag  sx={{height:40}}><img style={{width:30}} src='/cart_info.png' onClick={() => alert('You need to login to do this action')}  /></IconTag>
+                  <IconTag  sx={{height:40}}><img style={{width:30}} src='/eye_info.png' onClick={() => alert('You need to login to do this action')} /></IconTag>
+                
+                  </Box>
         {/* Course Image */}
         {course.image?.url && (
           <CardMedia
             component="img"
             image={course.image.url}
             alt={course.title}
-            sx={{ width: '100%', height: '300px', borderRadius: 2, objectFit: 'cover', marginBottom: 3 }}
+            sx={{ width:400,height:600,borderRadius: 2, objectFit: 'cover', marginBottom: 3 }}
           />
+          
         )}
+        
 
         {/* Course Title and Category */}
-        <Typography variant="h4" fontWeight="bold" sx={{ marginBottom: 2 }}>
+        <CardContent sx={{ padding: 3, display: 'flex', flexDirection: 'column', gap: 1, fontSize:'10'}}>
+        <Heading3 sx={{padding:0}}>{course.category}</Heading3>
+        
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, marginBottom: 2 }}>
+        <Typography  variant="h4" fontWeight="bold" sx={{ marginTop: 1 }}>
           {course.title}
         </Typography>
-        <Chip label={course.category} color="primary" sx={{ marginBottom: 2 }} />
+        <Rating >{course.rating?.toFixed(1) || '4.9'}</Rating>
+        </Box>
 
         {/* Course Description */}
-        <Typography variant="body1" sx={{ marginBottom: 3 }}>
+        <Typography fontSize={16} color="textSecondary" sx={{ fontWeight:600, mb: 1, marginBottom: 3 }}>
           {course.description}
         </Typography>
-
+        <Typography fontSize={18} fontWeight={700} variant="body2"  color="textSecondary">
+                  <img src='/frame.png' style={{width: 25,verticalAlign: 'text-bottom'}}></img> {course.sales} Sales
+                </Typography>
         {/* Price Section */}
         <Box sx={{ display: 'flex', alignItems: 'center', marginBottom: 2 }}>
           {course.discountPrice ? (
@@ -66,44 +100,38 @@ const CourseDetails: NextPage<CourseDetailsProps> = ({ course }) => {
               <Typography variant="h5" sx={{ textDecoration: 'line-through', color: '#B0BEC5', marginRight: 2 }}>
                 ${course.price}
               </Typography>
-              <Typography variant="h4" color="primary">
+              <Typography variant="h4" color="#40BB15">
                 ${course.discountPrice}
               </Typography>
             </>
           ) : (
-            <Typography variant="h4" color="primary">
+            <Typography variant="h4">
               ${course.price}
             </Typography>
           )}
         </Box>
 
         {/* Course Details */}
-        <Box sx={{ display: 'flex', gap: 3, marginBottom: 3 }}>
-          <Typography variant="body2" color="textSecondary">
-            ⏳ {course.duration}
-          </Typography>
-          <Typography variant="body2" color="textSecondary">
-            📚 {course.lessons} Lessons
-          </Typography>
-          <Typography variant="body2" color="textSecondary">
-            ✅ {course.progress}% Progress
-          </Typography>
-        </Box>
-
-        {/* Rating and Sales */}
-        <Box sx={{ display: 'flex', gap: 3, marginBottom: 3 }}>
-          <Chip
-            icon={<StarIcon style={{ color: '#FFD700' }} />}
-            label={course.rating?.toFixed(1) || '4.9'}
-            sx={{ backgroundColor: '#FFF3CD', fontSize: '12px' }}
-          />
-          <Typography variant="body2" color="textSecondary">
-            📈 {course.sales || 15} Sales
-          </Typography>
+        <Box sx={{ display: 'flex', gap: 5, marginBottom: 3, '& .MuiTypography-body2': {fontSize: '16px'} }}>
+          <div style={{display:'flex'}}>
+          <Box component="img" src="/clock.png"  height={20} />
+            <Typography paddingLeft={1} variant="body2" color="textSecondary">{course.duration} Hour</Typography>
+          </div>
+          <div style={{display:'flex'}}>
+          <Box component="img" src="/lesson.png" height={20} />
+            <Typography paddingLeft={1}  variant="body2" color="textSecondary">
+             {course.lessons} Lessons
+          </Typography></div>
+          <div style={{display:'flex'}}>
+            <Box component="img" src="/chart.png"  height={20} />
+            <Typography paddingLeft={1} variant="body2" color="textSecondary">
+          
+            {course.progress}% Progress
+          </Typography></div>
         </Box>
 
         {/* Action Buttons */}
-        <Box sx={{ display: 'flex', gap: 2, marginBottom: 3 }}>
+        <Box sx={{ display: 'flex', gap: 2, marginTop: -1 }}>
           <Button onClick={() => alert('You need to login to do this action')} variant="contained" sx={{ borderRadius: 10 }}>
             Enroll Now
           </Button>
@@ -112,14 +140,11 @@ const CourseDetails: NextPage<CourseDetailsProps> = ({ course }) => {
           </Button>
         </Box>
 
-        {/* Social Icons */}
-        <Box sx={{ display: 'flex', gap: 2 }}>
-          <FavoriteBorderIcon onClick={() => alert('You need to login to do this action')} color="action" />
-          <ShareIcon onClick={() => alert('You need to login to do this action')} color="action" />
-          <VisibilityIcon onClick={() => alert('You need to login to do this action')} color="action" />
-        </Box>
-      </Box>
+        
+      </CardContent></Box>
+      
     </Box></div>
+    
   );
 };
 
@@ -128,14 +153,14 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const res = await fetch('http://localhost:3001/api/courses');
   const data = await res.json();
 
-  // Generate paths for all courses
+  // pre-generate paths for all courses when building ()
   const paths = data.docs.map((course: any) => ({
     params: { id: course.id },
   }));
 
   return {
     paths,
-    fallback: true,
+    fallback: true, //handels non-generated course paths
   };
 };
 

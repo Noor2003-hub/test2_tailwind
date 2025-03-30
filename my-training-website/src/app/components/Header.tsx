@@ -5,21 +5,25 @@ const Header = () => {
   return (
     <header 
       style={{
+        // width: 128,
+        // height: 24,
         backgroundColor: '#9cbcef',
         padding: '20px',
         textAlign: 'left',
-        fontFamily: 'Arial, sans-serif'
       }}
     >
       <div
         style={{
-          fontSize: '30px',
-          fontWeight: 'bold',
+          fontSize: 24,
+          fontWeight: 700,
           color: '#252b42',
-          marginLeft: '20px',
+          marginLeft: '100px',
+          
+          letterSpacing:0.1
+          
         }}
       >
-        🎓 Course.com
+        <h3>🎓 Course.com</h3>
       </div>
     </header>
   );

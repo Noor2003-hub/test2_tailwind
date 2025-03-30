@@ -4,28 +4,14 @@ import CourseCard from '../src/app/components/CourseCard';
 import { IconButton } from '@mui/material';
 import { ChevronLeft, ChevronRight } from '@mui/icons-material';
 import { Box, Typography } from "@mui/material";
+
 import { CreditCard, Favorite, PhotoLibrary } from "@mui/icons-material";
 import HeroSection from '../src/app/components/HeroSection';
 import WhyJoinSection from '../src/app/components/WhyJoinSection';
 import Header from '../src/app/components/Header';
+import { Montserrat } from "next/font/google";
 
-const features = [
-  { 
-    title: "Lifetime access", 
-    desc: "Pay once and learn forever", 
-    icon: <CreditCard fontSize="large" color="primary" /> 
-  },
-  { 
-    title: "Touch By Experts", 
-    desc: "Our experts recorded the sessions to their experience with you.", 
-    icon: <Favorite fontSize="large" color="primary" /> 
-  },
-  { 
-    title: "Books Library", 
-    desc: "Our videos are supported by many books that you can access for free", 
-    icon: <PhotoLibrary fontSize="large" color="primary" /> 
-  },
-];
+import { Heading3, Heading1, Paragraph } from '../components/typography/index';
 
 interface Course {
   id: string;
@@ -60,48 +46,45 @@ const Home: NextPage<HomeProps> = ({ courses }) => {
   };
 
   return (
-    <div style={{ fontFamily: 'Arial, sans-serif' }}>
-      <Header />
+    <div >
+      
       <HeroSection />
       <WhyJoinSection />
 
       {/* Courses Section */}
-      <div style={{ padding: '40px', backgroundColor: '#EAF2FF' }}>
-        <div style={{ textAlign: 'left', marginBottom: '30px', marginLeft: '50px' }}>
-          <Typography variant="h6" color="#23a6f0" fontWeight="bold">
-            Get Started
-          </Typography>
-          <Typography variant="h4" fontWeight="bold" style={{ color: '#252b42' }}>
-            Watch Our Courses
-          </Typography>
-          <Typography color="textSecondary">
+      <div style={{ backgroundColor: '#EAF2FF' }}>
+        <div style={{  marginLeft: 150,paddingTop:70,paddingBottom:60,textAlign: 'left',}}>
+        
+          <Heading3>Get Started</Heading3>
+          <Heading1>Watch Our Courses</Heading1>
+          <Paragraph>
           From Python and JavaScript to Web Development and AI, our hands-on courses will guide you through every step of your programming journey.
-          </Typography>
+          </Paragraph>
+          
         </div>
 
         <div style={{ position: 'relative' }}>
           {/* Scroll Buttons */}
-          <IconButton
-            style={{ position: 'absolute', left: 0, top: '50%', transform: 'translateY(-50%)', zIndex: 10 }}
-            onClick={() => scroll('left')}
-          >
-            <ChevronLeft />
-          </IconButton>
-
-          <div ref={scrollRef} style={{ display: 'flex', gap: '50px', overflowX: 'auto', padding: '0 40px', scrollbarWidth: 'none' }}>
+          <div ref={scrollRef} style={{ display: 'flex', gap: '1px', overflowX: 'auto', padding: '0 70px', scrollbarWidth: 'none' }}>
             {courses.map((course) => (
-              <div key={course.id} style={{ flexShrink: 0, width: '400px', height: '100%', position: 'relative' }}>
+
+              <div key={course.id} style={{ flexShrink: 0, width: '480px', height: '530px', position: 'relative' }}>
                 {course.discountPrice && (
                   <div style={{
                     position: 'absolute',
-                    top: '10px',
-                    left: '10px',
-                    backgroundColor: 'red',
+                    width:45,
+                    height:23,
+                    top: '15px',
+                    left: '15px',
+                    textAlign: 'center',
+                    backgroundColor: '#E74040',
                     color: 'white',
-                    padding: '5px 10px',
-                    fontWeight: 'bold',
-                    borderRadius: '5px',
-                    zIndex: 5
+                    padding: '3px 1px',
+                    fontSize:12,
+                    borderRadius: '2px',
+                    zIndex: 1,
+                    boxShadow:'0px 2px 4px 0px rgba(0,0,0,0.1)'
+
                   }}>
                     Sale
                   </div>
@@ -124,13 +107,6 @@ const Home: NextPage<HomeProps> = ({ courses }) => {
               </div>
             ))}
           </div>
-
-          <IconButton
-            style={{ position: 'absolute', right: 0, top: '50%', transform: 'translateY(-50%)', zIndex: 10 }}
-            onClick={() => scroll('right')}
-          >
-            <ChevronRight />
-          </IconButton>
         </div>
       </div>
     </div>
