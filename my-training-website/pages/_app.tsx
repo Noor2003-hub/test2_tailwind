@@ -2,6 +2,7 @@ import { Montserrat } from "next/font/google";
 import { AppProps } from 'next/app'; 
 import './globals.css';
 import Header from '../src/app/components/Header';
+
 const montserrat = Montserrat({
   subsets: ['latin'],
   weight: '700'

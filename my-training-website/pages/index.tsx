@@ -4,7 +4,6 @@ import CourseCard from '../src/app/components/CourseCard';
 import { IconButton } from '@mui/material';
 import { ChevronLeft, ChevronRight } from '@mui/icons-material';
 import { Box, Typography } from "@mui/material";
-
 import { CreditCard, Favorite, PhotoLibrary } from "@mui/icons-material";
 import HeroSection from '../src/app/components/HeroSection';
 import WhyJoinSection from '../src/app/components/WhyJoinSection';
