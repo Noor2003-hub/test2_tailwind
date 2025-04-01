@@ -196,10 +196,13 @@ const CourseCard: React.FC<CourseCardProps> = ({
               <Box className="!mt-0.5">Progress</Box>
             </div>
           </div>
-          <div className="!mt-3 flex h-[44] w-[145] flex-row items-center justify-center rounded-4xl border border-[#23A6F0] text-[14px] font-black text-[#23A6F0]">
-            <button onClick={handleLearnMore}>Learn More </button>
+          <button
+            onClick={handleLearnMore}
+            className="!mt-3 flex h-[44] w-[145] cursor-pointer flex-row items-center justify-center rounded-4xl border border-[#23A6F0] text-[14px] font-black text-[#23A6F0]"
+          >
+            <h3>Learn More </h3>
             <img src="/arrow.png" style={{ paddingLeft: 10 }}></img>
-          </div>
+          </button>
         </div>
       </div>
     </div>
