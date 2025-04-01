@@ -3,26 +3,8 @@ import React from "react";
 
 const Header = () => {
   return (
-    <header
-      style={{
-        // width: 128,
-        // height: 24,
-        backgroundColor: "#9cbcef",
-        padding: "20px",
-        textAlign: "left",
-      }}
-    >
-      <div
-        style={{
-          fontSize: 24,
-          fontWeight: 700,
-          color: "#252b42",
-          marginLeft: "100px",
-          letterSpacing: 0.1,
-        }}
-      >
-        <h3>🎓 Course.com</h3>
-      </div>
+    <header className="h-22 bg-[#9cbcef] !p-[25px] shadow-2xl">
+      <h1 className="!ml-25 text-2xl">🎓 Course.com</h1>
     </header>
   );
 };
