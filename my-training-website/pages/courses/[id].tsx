@@ -165,9 +165,6 @@ const CourseDetails: NextPage<CourseDetailsProps> = ({ course }) => {
           </div>
         </div>
       </div>
-      <div className="!m-10 !mt-0 flex h-8/10 w-8/10 flex-col items-center justify-center gap-5 bg-[#ffff] !p-5">
-        {/* heree */}
-      </div>
     </div>
     // <div style={{display:'flex', justifyContent: 'center',alignItems: 'center', backgroundColor: '#EAF2FF' }}>
     // <Box sx={{
