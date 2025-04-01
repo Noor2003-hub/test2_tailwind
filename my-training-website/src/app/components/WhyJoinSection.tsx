@@ -21,7 +21,7 @@ const features = [
 
 const WhyJoinSection = () => {
   return (
-    <div className="flex w-full justify-between text-[14px] text-[#252B42]">
+    <div className="flex h-170 w-full justify-between text-[15px] text-[#252B42]">
       <div className="gap-4.5 !pt-15 !pb-50 !pl-37">
         <h6 className="text-[#23A6F0]">Practice Advice</h6>
         <h1 className="text-4xl leading-18 font-bold text-[#252B42]">
@@ -66,6 +66,7 @@ const WhyJoinSection = () => {
         </div>
       </div>
     </div>
+    //old code:
     // <Box sx={{ py: 10, px: 10, bgcolor: '#fff', maxWidth: "1000px", mx: "auto"}}>
     //   <h3 style={{ color: '#23a6f0',width: 128,
     //                   height: 24,

@@ -32,9 +32,9 @@ const HeroSection = () => {
   const redCircleSizes = [25, 18, 10, 18];
   return (
     <div className="flex w-full justify-between bg-[#EAF2FF]">
-      <div className="flex flex-col gap-5 !pt-25 !pb-50 !pl-40">
+      <div className="flex flex-col gap-4.5 !pt-25 !pb-50 !pl-30">
         <h6 className="text-[#23A6F0]">Online training</h6>
-        <h1 className="w-2 text-5xl leading-19 font-bold text-[#252B42]">
+        <h1 className="w-2 text-5xl leading-18 font-bold text-[#252B42]">
           Highly Distinguished Courses
         </h1>
         <p className="w-90 text-xl font-light text-[#737373]">

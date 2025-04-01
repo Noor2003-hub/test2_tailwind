@@ -1,16 +1,16 @@
-import { NextPage, GetStaticProps } from 'next';
-import { useRef } from 'react';
-import CourseCard from '../src/app/components/CourseCard';
-import { IconButton } from '@mui/material';
-import { ChevronLeft, ChevronRight } from '@mui/icons-material';
+import { NextPage, GetStaticProps } from "next";
+import { useRef } from "react";
+import CourseCard from "../src/app/components/CourseCard";
+import { IconButton } from "@mui/material";
+import { ChevronLeft, ChevronRight } from "@mui/icons-material";
 import { Box, Typography } from "@mui/material";
 import { CreditCard, Favorite, PhotoLibrary } from "@mui/icons-material";
-import HeroSection from '../src/app/components/HeroSection';
-import WhyJoinSection from '../src/app/components/WhyJoinSection';
-import Header from '../src/app/components/Header';
+import HeroSection from "../src/app/components/HeroSection";
+import WhyJoinSection from "../src/app/components/WhyJoinSection";
+import Header from "../src/app/components/Header";
 import { Montserrat } from "next/font/google";
 
-import { Heading3, Heading1, Paragraph } from '../components/typography/index';
+import { Heading3, Heading1, Paragraph } from "../components/typography/index";
 
 interface Course {
   id: string;
@@ -36,55 +36,75 @@ interface HomeProps {
 const Home: NextPage<HomeProps> = ({ courses }) => {
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  const scroll = (direction: 'left' | 'right') => {
+  const scroll = (direction: "left" | "right") => {
     if (scrollRef.current) {
       const { current } = scrollRef;
       const scrollAmount = 250;
-      current.scrollBy({ left: direction === 'left' ? -scrollAmount : scrollAmount, behavior: 'smooth' });
+      current.scrollBy({
+        left: direction === "left" ? -scrollAmount : scrollAmount,
+        behavior: "smooth",
+      });
     }
   };
 
   return (
-    <div >
-      
+    <div>
       <HeroSection />
       <WhyJoinSection />
 
       {/* Courses Section */}
-      <div style={{ backgroundColor: '#EAF2FF' }}>
-        <div style={{  marginLeft: 150,paddingTop:70,paddingBottom:60,textAlign: 'left',}}>
-        
+      <div className="bg-[#EAF2FF]">
+        <div className="!mb-20 !ml-40 !pt-40">
           <Heading3>Get Started</Heading3>
           <Heading1>Watch Our Courses</Heading1>
           <Paragraph>
-          From Python and JavaScript to Web Development and AI, our hands-on courses will guide you through every step of your programming journey.
+            From Python and JavaScript to Web Development and AI, our hands-on
+            courses will guide you through every step of your programming
+            journey.
           </Paragraph>
-          
         </div>
 
-        <div style={{ position: 'relative' }}>
+        <div style={{ position: "relative" }}>
           {/* Scroll Buttons */}
-          <div ref={scrollRef} style={{ display: 'flex', gap: '1px', overflowX: 'auto', padding: '0 70px', scrollbarWidth: 'none' }}>
+          <div
+            ref={scrollRef}
+            style={{
+              display: "flex",
+              gap: "1px",
+              overflowX: "auto",
+              padding: "0 70px",
+              scrollbarWidth: "none",
+            }}
+          >
             {courses.map((course) => (
-
-              <div key={course.id} style={{ flexShrink: 0, width: '480px', height: '530px', position: 'relative' }}>
+              <div
+                key={course.id}
+                style={{
+                  flexShrink: 0,
+                  width: "470px",
+                  height: "530px",
+                  marginLeft: 20,
+                  position: "relative",
+                }}
+              >
                 {course.discountPrice && (
-                  <div style={{
-                    position: 'absolute',
-                    width:45,
-                    height:23,
-                    top: '15px',
-                    left: '15px',
-                    textAlign: 'center',
-                    backgroundColor: '#E74040',
-                    color: 'white',
-                    padding: '3px 1px',
-                    fontSize:12,
-                    borderRadius: '2px',
-                    zIndex: 1,
-                    boxShadow:'0px 2px 4px 0px rgba(0,0,0,0.1)'
-
-                  }}>
+                  <div
+                    style={{
+                      position: "absolute",
+                      width: 45,
+                      height: 23,
+                      top: "20px",
+                      left: "25px",
+                      textAlign: "center",
+                      backgroundColor: "#E74040",
+                      color: "white",
+                      padding: "3px 1px",
+                      fontSize: 12,
+                      borderRadius: "2px",
+                      zIndex: 1,
+                      boxShadow: "0px 2px 4px 0px rgba(0,0,0,0.1)",
+                    }}
+                  >
                     Sale
                   </div>
                 )}
@@ -114,12 +134,12 @@ const Home: NextPage<HomeProps> = ({ courses }) => {
 
 export const getStaticProps: GetStaticProps<HomeProps> = async () => {
   try {
-    const res = await fetch('http://localhost:3001/api/courses');
+    const res = await fetch("http://localhost:3001/api/courses");
     if (!res.ok) throw new Error(`Failed to fetch courses: ${res.statusText}`);
     const data = await res.json();
     return { props: { courses: data.docs } };
   } catch (error) {
-    console.error('Error fetching courses:', error);
+    console.error("Error fetching courses:", error);
     return { props: { courses: [] } };
   }
 };
