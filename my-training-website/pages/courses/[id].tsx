@@ -48,9 +48,9 @@ const CourseDetails: NextPage<CourseDetailsProps> = ({ course }) => {
   }
 
   return (
-    <div className="flex h-screen w-screen flex-col items-center justify-between bg-[#EAF2FF] text-[22px] text-[#252B42]">
-      <div className="!m-10 flex h-8/10 w-8/10 flex-row bg-[#ffff]">
-        <div className="relative h-full w-1/4 max-w-full">
+    <div className="flex min-h-screen w-screen flex-col items-center justify-between bg-[#EAF2FF] text-[22px] text-[#252B42]">
+      <div className="!m-10 !mb-0 flex h-full w-8/10 flex-row bg-[#ffff]">
+        <div className="relative">
           {course.image && (
             <img
               src={course.image.url}
@@ -85,7 +85,7 @@ const CourseDetails: NextPage<CourseDetailsProps> = ({ course }) => {
           </div>
         </div>
 
-        <div className="flex w-2/3 flex-col !gap-5 !p-10 text-lg">
+        <div className="flex w-2/3 flex-col !gap-4 !p-10 text-[15px]">
           <div className="flex min-w-full flex-row justify-between">
             <Heading3 sx={{ fontSize: "20px" }}>{course.category}</Heading3>
             <Chip
@@ -106,6 +106,22 @@ const CourseDetails: NextPage<CourseDetailsProps> = ({ course }) => {
           <div className="!mt-2 flex flex-row text-[15px] font-light text-[#737373]">
             <img src="/frame.png" className="!mr-2 h-6 w-5 !pb-1"></img>
             <p className="!mb-[6px] font-bold">{course.sales} Sales</p>
+          </div>
+          <div className="flex w-full flex-row gap-15 text-[15px] font-bold text-[#737373]">
+            <div className="flex flex-row gap-1">
+              <Box component="img" src="/clock.png" height={25} />
+              <Box width={100} className="!mt-0.5">
+                {course.duration} Hour
+              </Box>
+            </div>
+            <div className="flex flex-row gap-1">
+              <Box component="img" src="/lesson.png" height={25} />
+              <Box className="!mt-0.5 !mr-2">{course.lessons} Lessons</Box>
+            </div>
+            <div className="flex flex-row gap-1">
+              <Box component="img" src="/chart.png" height={25} />
+              <Box className="!mt-0.5">Progress</Box>
+            </div>
           </div>
           <Typography variant="body2" fontSize="27px" fontWeight="bold">
             {course.discountPrice !== course.price ? (
@@ -128,22 +144,7 @@ const CourseDetails: NextPage<CourseDetailsProps> = ({ course }) => {
               `$${course.price}`
             )}
           </Typography>
-          <div className="flex w-full flex-row gap-15 text-[15px] font-bold text-[#737373]">
-            <div className="flex flex-row gap-1">
-              <Box component="img" src="/clock.png" height={25} />
-              <Box width={60} className="!mt-0.5">
-                {course.duration} Hour
-              </Box>
-            </div>
-            <div className="flex flex-row gap-1">
-              <Box component="img" src="/lesson.png" height={25} />
-              <Box className="!mt-0.5 !mr-2">{course.lessons} Lessons</Box>
-            </div>
-            <div className="flex flex-row gap-1">
-              <Box component="img" src="/chart.png" height={25} />
-              <Box className="!mt-0.5">Progress</Box>
-            </div>
-          </div>
+
           <div className="!mt-3 flex h-full w-full flex-row items-center justify-items-start font-black">
             <Box sx={{ display: "flex", gap: 2, marginTop: -1 }}>
               <Button
@@ -163,6 +164,9 @@ const CourseDetails: NextPage<CourseDetailsProps> = ({ course }) => {
             </Box>
           </div>
         </div>
+      </div>
+      <div className="!m-10 !mt-0 flex h-8/10 w-8/10 flex-col items-center justify-center gap-5 bg-[#ffff] !p-5">
+        {/* heree */}
       </div>
     </div>
     // <div style={{display:'flex', justifyContent: 'center',alignItems: 'center', backgroundColor: '#EAF2FF' }}>
