@@ -131,10 +131,8 @@ const CourseDetails: NextPage<CourseDetailsProps> = ({ course }) => {
           <div className="flex w-full flex-row gap-15 text-[15px] font-bold text-[#737373]">
             <div className="flex flex-row gap-1">
               <Box component="img" src="/clock.png" height={25} />
-              <Box width={40} className="!mt-0.5">
-                {course.duration.length > 4
-                  ? `${course.duration.substring(0, 4)}...`
-                  : course.duration}
+              <Box width={60} className="!mt-0.5">
+                {course.duration} Hour
               </Box>
             </div>
             <div className="flex flex-row gap-1">
