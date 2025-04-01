@@ -60,23 +60,23 @@ const CourseDetails: NextPage<CourseDetailsProps> = ({ course }) => {
           )}
           <div className="absolute bottom-0 z-10 flex w-full flex-col items-center justify-end !gap-2 text-white">
             <div className="!mb-5 flex flex-row gap-4">
-              <div className="flex h-20 w-20 items-center justify-center rounded-full bg-gray-50">
+              <div className="flex h-13 w-13 items-center justify-center rounded-full bg-gray-50">
                 <img
                   src="/heart_info.png"
-                  className="w-9"
+                  className="w-7"
                   onClick={() => alert("You need to login to do this action")}
                 />
               </div>
-              <div className="flex h-20 w-20 items-center justify-center rounded-full bg-gray-50">
+              <div className="flex h-13 w-13 items-center justify-center rounded-full bg-gray-50">
                 <img
-                  className="w-9"
+                  className="w-7"
                   src="/cart_info.png"
                   onClick={() => alert("You need to login to do this action")}
                 />
               </div>
-              <div className="flex h-20 w-20 items-center justify-center rounded-full bg-gray-50">
+              <div className="flex h-13 w-13 items-center justify-center rounded-full bg-gray-50">
                 <img
-                  className="w-9"
+                  className="w-7"
                   src="/eye_info.png"
                   onClick={() => alert("You need to login to do this action")}
                 />
@@ -85,9 +85,9 @@ const CourseDetails: NextPage<CourseDetailsProps> = ({ course }) => {
           </div>
         </div>
 
-        <div className="flex w-2/3 flex-col !gap-8 !p-10">
+        <div className="flex w-2/3 flex-col !gap-5 !p-10 text-lg">
           <div className="flex min-w-full flex-row justify-between">
-            <Heading3 sx={{ fontSize: "35px" }}>{course.category}</Heading3>
+            <Heading3 sx={{ fontSize: "20px" }}>{course.category}</Heading3>
             <Chip
               className="max-h-10 w-20 font-light"
               style={{
@@ -100,11 +100,11 @@ const CourseDetails: NextPage<CourseDetailsProps> = ({ course }) => {
               label={course.rating?.toFixed(1) || "4.9"}
             />
           </div>
-          <h1 className="text-5xl">{course.title}</h1>
+          <h1 className="text-3xl">{course.title}</h1>
 
           <p className="font-normal text-[#737373]">{course.description}</p>
-          <div className="!mt-2 flex flex-row text-[20px] font-light text-[#737373]">
-            <img src="/frame.png" className="!mr-2 h-8 w-8 !pb-1"></img>
+          <div className="!mt-2 flex flex-row text-[15px] font-light text-[#737373]">
+            <img src="/frame.png" className="!mr-2 h-6 w-5 !pb-1"></img>
             <p className="!mb-[6px] font-bold">{course.sales} Sales</p>
           </div>
           <Typography variant="body2" fontSize="27px" fontWeight="bold">
@@ -128,9 +128,9 @@ const CourseDetails: NextPage<CourseDetailsProps> = ({ course }) => {
               `$${course.price}`
             )}
           </Typography>
-          <div className="flex w-full flex-row gap-15 text-[22px] font-bold text-[#737373]">
+          <div className="flex w-full flex-row gap-15 text-[15px] font-bold text-[#737373]">
             <div className="flex flex-row gap-1">
-              <Box component="img" src="/clock.png" height={35} />
+              <Box component="img" src="/clock.png" height={25} />
               <Box width={40} className="!mt-0.5">
                 {course.duration.length > 4
                   ? `${course.duration.substring(0, 4)}...`
@@ -138,11 +138,11 @@ const CourseDetails: NextPage<CourseDetailsProps> = ({ course }) => {
               </Box>
             </div>
             <div className="flex flex-row gap-1">
-              <Box component="img" src="/lesson.png" height={35} />
+              <Box component="img" src="/lesson.png" height={25} />
               <Box className="!mt-0.5 !mr-2">{course.lessons} Lessons</Box>
             </div>
             <div className="flex flex-row gap-1">
-              <Box component="img" src="/chart.png" height={35} />
+              <Box component="img" src="/chart.png" height={25} />
               <Box className="!mt-0.5">Progress</Box>
             </div>
           </div>
@@ -151,14 +151,14 @@ const CourseDetails: NextPage<CourseDetailsProps> = ({ course }) => {
               <Button
                 onClick={() => alert("You need to login to do this action")}
                 variant="contained"
-                sx={{ borderRadius: 10, fontSize: 20 }}
+                sx={{ borderRadius: 10, fontSize: 15 }}
               >
                 Enroll Now
               </Button>
               <Button
                 onClick={() => alert("You need to login to do this action")}
                 variant="outlined"
-                sx={{ borderRadius: 10, fontSize: 20 }}
+                sx={{ borderRadius: 10, fontSize: 15 }}
               >
                 Add to Wishlist
               </Button>
